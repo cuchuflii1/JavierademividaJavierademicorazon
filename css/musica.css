@@ -1,0 +1,1058 @@
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0c070a;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   CONTENEDOR GENERAL
+========================================================= */
+
+.musica {
+    min-height: 100vh;
+
+    padding:
+        55px 24px 100px;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(173,47,103,.2),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 60%,
+            rgba(109,31,76,.17),
+            transparent 34%
+        ),
+        #0c070a;
+}
+
+.musica-wrap {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+/* =========================================================
+   VOLVER ARRIBA
+========================================================= */
+
+.volver-arriba {
+    display: inline-block;
+
+    margin-bottom: 70px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+.volver-arriba:hover {
+    color: #e7a8c4;
+
+    transform:
+        translateX(-4px);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.musica-header {
+    max-width: 850px;
+
+    margin:
+        0 auto 95px;
+
+    text-align: center;
+
+    animation:
+        entradaMusica 1.2s ease;
+}
+
+.musica-mini {
+    display: block;
+
+    color: #e7a8c4;
+
+    font-size: 11px;
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+}
+
+.musica-header h1 {
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(52px, 8vw, 90px);
+
+    font-weight: normal;
+
+    line-height: 1.05;
+}
+
+.musica-header h1 span {
+    display: block;
+
+    color: #f0b7cf;
+}
+
+.musica-header > p {
+    max-width: 620px;
+
+    margin:
+        30px auto 0;
+
+    color: #cbbdc3;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   TARJETAS DE CANCIONES
+========================================================= */
+
+.cancion {
+    display: grid;
+
+    grid-template-columns:
+        220px 1fr;
+
+    gap: 55px;
+
+    align-items: center;
+
+    max-width: 900px;
+
+    margin:
+        0 auto 75px;
+
+    padding: 28px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid rgba(231,168,196,.16);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.018)
+        );
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.18);
+
+    transition:
+        transform .45s ease,
+        border-color .45s ease,
+        background .45s ease,
+        box-shadow .45s ease;
+}
+
+.cancion:hover {
+    transform:
+        translateY(-5px)
+        scale(1.01);
+
+    border-color:
+        rgba(231,168,196,.45);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(231,168,196,.07),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 35px 75px rgba(0,0,0,.3);
+}
+
+
+/* =========================================================
+   TARJETAS INVERTIDAS
+========================================================= */
+
+.cancion.invertida {
+    grid-template-columns:
+        1fr 220px;
+}
+
+.cancion.invertida
+.portada-cancion {
+    order: 2;
+}
+
+.cancion.invertida
+.info-cancion {
+    order: 1;
+}
+
+
+/* =========================================================
+   PORTADAS
+========================================================= */
+
+.portada-cancion {
+    position: relative;
+
+    width: 220px;
+    height: 220px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.4);
+
+    transform:
+        rotate(-1.5deg);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+}
+
+.cancion.invertida
+.portada-cancion {
+    transform:
+        rotate(1.5deg);
+}
+
+.cancion:hover
+.portada-cancion {
+    transform:
+        rotate(0)
+        scale(1.035);
+
+    box-shadow:
+        0 30px 65px rgba(0,0,0,.48);
+}
+
+.portada-cancion img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .8s ease;
+}
+
+.cancion:hover
+.portada-cancion img {
+    transform:
+        scale(1.05);
+}
+
+.portada-cancion::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(8,4,7,.55),
+            transparent 55%
+        );
+}
+
+.portada-cancion > span {
+    position: absolute;
+
+    left: 17px;
+    bottom: 14px;
+
+    z-index: 2;
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+}
+
+
+/* =========================================================
+   INFORMACIÓN CANCIÓN
+========================================================= */
+
+.info-cancion > small {
+    display: block;
+
+    color: #e7a8c4;
+
+    font-size: 9px;
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+}
+
+.info-cancion h2 {
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(34px, 5vw, 50px);
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   FRAGMENTO
+========================================================= */
+
+.fragmento {
+    padding: 22px 25px;
+
+    margin-bottom: 20px;
+
+    border-left:
+        2px solid #e7a8c4;
+
+    border-radius:
+        0 18px 18px 0;
+
+    background:
+        rgba(255,255,255,.035);
+
+    transition:
+        transform .35s ease,
+        background .35s ease;
+}
+
+.cancion:hover
+.fragmento {
+    transform:
+        translateX(4px);
+
+    background:
+        rgba(231,168,196,.07);
+}
+
+.fragmento span {
+    display: block;
+
+    color:
+        rgba(231,168,196,.7);
+
+    font-size: 8px;
+    letter-spacing: 3px;
+
+    margin-bottom: 9px;
+}
+
+.fragmento p {
+    color: #fff7fa;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(19px, 2.7vw, 25px);
+
+    font-style: italic;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   EXPLICACIÓN
+========================================================= */
+
+.explicacion {
+    max-width: 510px;
+
+    color: #b9abb1;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   PLAYLIST ESPECIAL
+========================================================= */
+
+.playlist-especial {
+    position: relative;
+
+    max-width: 760px;
+
+    margin:
+        120px auto 130px;
+
+    padding:
+        55px 45px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border-radius: 34px;
+
+    border:
+        1px solid rgba(231,168,196,.28);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(231,168,196,.16),
+            transparent 45%
+        ),
+        rgba(255,255,255,.035);
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.28);
+}
+
+
+/* LUZ DECORATIVA */
+
+.playlist-especial::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    left: 50%;
+    top: -190px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(231,168,196,.16);
+
+    filter:
+        blur(70px);
+
+    pointer-events: none;
+}
+
+
+/* CORAZONES */
+
+.playlist-corazones {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.playlist-corazones span {
+    color: #f4b4cf;
+
+    font-size: 21px;
+
+    text-shadow:
+        0 0 18px rgba(244,180,207,.55);
+}
+
+.playlist-corazones span:nth-child(1) {
+    animation:
+        corazonPlaylist 1.8s
+        ease-in-out infinite;
+}
+
+.playlist-corazones span:nth-child(2) {
+    animation:
+        corazonPlaylist 1.8s
+        .18s ease-in-out infinite;
+}
+
+.playlist-corazones span:nth-child(3) {
+    animation:
+        corazonPlaylist 1.8s
+        .36s ease-in-out infinite;
+}
+
+
+/* TEXTO PLAYLIST */
+
+.playlist-mini {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: #e7a8c4;
+
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.playlist-especial h2 {
+    max-width: 600px;
+
+    margin:
+        0 auto 20px;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(35px, 5vw, 52px);
+
+    font-weight: normal;
+
+    line-height: 1.15;
+}
+
+.playlist-especial > p {
+    max-width: 580px;
+
+    margin:
+        0 auto 34px;
+
+    color: #c5b6bd;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BOTÓN SPOTIFY GRANDE
+========================================================= */
+
+.spotify-playlist-grande {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-width: 330px;
+
+    padding:
+        17px 20px;
+
+    border-radius: 22px;
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,215,96,.12),
+            rgba(231,168,196,.08)
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: left;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.22);
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease,
+        background .4s ease;
+}
+
+.spotify-playlist-grande:hover {
+    transform:
+        translateY(-6px)
+        scale(1.025);
+
+    border-color:
+        rgba(231,168,196,.65);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,215,96,.17),
+            rgba(231,168,196,.13)
+        );
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.32);
+}
+
+.spotify-playlist-grande:active {
+    transform:
+        translateY(-2px)
+        scale(.985);
+}
+
+
+/* ICONO SPOTIFY */
+
+.spotify-logo {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(30,215,96,.12);
+
+    color: #1ed760;
+
+    font-size: 22px;
+
+    box-shadow:
+        0 0 22px rgba(30,215,96,.18);
+
+    animation:
+        spotifyPulso 2.2s
+        ease-in-out infinite;
+}
+
+
+/* TEXTO BOTÓN */
+
+.spotify-contenido {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.spotify-contenido small {
+    color:
+        rgba(231,168,196,.8);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+.spotify-contenido strong {
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    font-weight: normal;
+}
+
+
+/* FLECHA */
+
+.spotify-flecha {
+    margin-left: auto;
+
+    color:
+        rgba(255,255,255,.55);
+
+    transition:
+        transform .3s ease,
+        color .3s ease;
+}
+
+.spotify-playlist-grande:hover
+.spotify-flecha {
+    color: #f3bfd6;
+
+    transform:
+        translate(3px,-3px);
+}
+
+
+/* DETALLE DEBAJO */
+
+.playlist-detalle {
+    display: block;
+
+    margin-top: 18px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-family: Georgia, serif;
+
+    font-size: 12px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.musica-final {
+    max-width: 650px;
+
+    margin:
+        120px auto 0;
+
+    text-align: center;
+}
+
+.musica-final > span {
+    display: block;
+
+    color: #e7a8c4;
+
+    font-size: 45px;
+
+    margin-bottom: 22px;
+
+    animation:
+        latidoMusica 1.7s
+        ease-in-out infinite;
+}
+
+.musica-final > p {
+    color: #a998a0;
+
+    margin-bottom: 12px;
+}
+
+.musica-final h3 {
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+}
+
+.volver {
+    display: inline-block;
+
+    margin-top: 50px;
+
+    padding:
+        15px 28px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    color: white;
+
+    text-decoration: none;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+}
+
+.volver:hover {
+    background: #f3d4e1;
+
+    color: #351222;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes entradaMusica {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes latidoMusica {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+@keyframes corazonPlaylist {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: .65;
+    }
+
+    50% {
+        transform:
+            translateY(-5px)
+            scale(1.15);
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes spotifyPulso {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0 18px rgba(30,215,96,.15);
+    }
+
+    50% {
+        transform: scale(1.08);
+
+        box-shadow:
+            0 0 28px rgba(30,215,96,.28);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .musica {
+        padding:
+            35px 18px 80px;
+    }
+
+
+    .volver-arriba {
+        margin-bottom: 50px;
+    }
+
+
+    .musica-header {
+        margin-bottom: 65px;
+    }
+
+
+    .cancion,
+    .cancion.invertida {
+        grid-template-columns:
+            105px 1fr;
+
+        gap: 17px;
+
+        padding: 14px;
+
+        margin-bottom: 25px;
+
+        border-radius: 22px;
+    }
+
+
+    .cancion.invertida
+    .portada-cancion,
+    .cancion.invertida
+    .info-cancion {
+        order: initial;
+    }
+
+
+    .portada-cancion,
+    .cancion.invertida
+    .portada-cancion {
+        width: 105px;
+        height: 105px;
+
+        border-radius: 15px;
+
+        transform: none;
+    }
+
+
+    .portada-cancion > span {
+        left: 10px;
+        bottom: 8px;
+
+        font-size: 20px;
+    }
+
+
+    .info-cancion > small {
+        font-size: 7px;
+        letter-spacing: 2px;
+    }
+
+
+    .info-cancion h2 {
+        font-size: 21px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .fragmento {
+        padding:
+            10px 13px;
+
+        margin-bottom: 9px;
+
+        border-radius:
+            0 12px 12px 0;
+    }
+
+
+    .fragmento span {
+        display: none;
+    }
+
+
+    .fragmento p {
+        font-size: 14px;
+
+        line-height: 1.4;
+    }
+
+
+    .explicacion {
+        display: none;
+    }
+
+
+    /* PLAYLIST */
+
+    .playlist-especial {
+        margin:
+            80px auto 90px;
+
+        padding:
+            38px 20px;
+
+        border-radius: 26px;
+    }
+
+
+    .playlist-especial h2 {
+        font-size: 32px;
+    }
+
+
+    .playlist-especial > p {
+        font-size: 14px;
+    }
+
+
+    .spotify-playlist-grande {
+        width: 100%;
+
+        min-width: 0;
+
+        padding:
+            15px 16px;
+    }
+
+
+    .spotify-logo {
+        width: 39px;
+        height: 39px;
+
+        font-size: 19px;
+    }
+
+
+    .spotify-contenido small {
+        letter-spacing: 2px;
+    }
+
+
+    .spotify-contenido strong {
+        font-size: 15px;
+    }
+
+
+    .playlist-detalle {
+        font-size: 11px;
+    }
+
+
+    /* FINAL */
+
+    .musica-final {
+        margin-top: 80px;
+    }
+
+
+    .musica-final h3 {
+        font-size: 25px;
+    }
+}
